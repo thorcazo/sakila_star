@@ -1,6 +1,24 @@
-# Modelo Estrella: beneficios por categoría por día.
+# Tabla de hechos: beneficios por categoría por día.
 
-El objetivo de esta tabla de hechos es consultar los datos sobre los **beneficios obtenidos por categoría por día**, aunque puede llegar a ser lo suficiente flexible para hacer otro tipo de consultas.
+<aside>
+📌
+
+Para ver la estructura SQL he creado un repositorio en Github
+
+[https://github.com/thorcazo/sakila_star](https://github.com/thorcazo/sakila_star)
+
+</aside>
+
+<aside>
+📌
+
+Esta documentación se ha creado con Notion puede ver este mismo archivo en este enlace → [Tabla de hechos: beneficios por categoría por día.](https://www.notion.so/Tabla-de-hechos-beneficios-por-categor-a-por-d-a-18ba793e3bd180cc9095d392b09ff080?pvs=21) 
+
+</aside>
+
+---
+
+El objetivo de esta tabla de hechos es consultar los datos sobre los **beneficios obtenidos por categoría por día**, aunque puede llegar a ser lo suficiente flexible para hacer otro tipo de consultas agregando más dimensiones. 
 
 Para evitar problemas con la base de datos original hice una nueva base de datos llamada `sakila_star` y comencé a trabajar desde ahí. 
 
@@ -52,7 +70,7 @@ Cada dimensión contiene información detallada que se podrá mostrar en la tabl
 
 En siguiente **esquema** se muesrtra cómo se vería el modelo estrella enlazando las tablas dimensionales con la tabla de hechos `Fact_benefits`
 
-![image.png](attachment:f3d8dfdc-e3dc-4e30-ad45-3cf3402beb31:image.png)
+![image.png](image.png)
 
 # Creación de tablas SQL
 
@@ -212,7 +230,7 @@ ORDER BY
     c.category_name;
 ```
 
-![datagrip64_yZOM6fs86Z.png](attachment:91dc1996-2947-4f30-a7e6-c340121791b1:datagrip64_yZOM6fs86Z.png)
+![datagrip64_yZOM6fs86Z.png](datagrip64_yZOM6fs86Z.png)
 
 ### Cantidad de alquileres (total_rental) por Película y Año
 
@@ -234,7 +252,7 @@ ORDER BY
     total_rentals DESC;
 ```
 
-![datagrip64_QwwLkfpqpt.png](attachment:4e823a30-5743-4c71-8caa-490f60cdd15b:datagrip64_QwwLkfpqpt.png)
+![datagrip64_QwwLkfpqpt.png](datagrip64_QwwLkfpqpt.png)
 
 ### Top 10 Películas más Alquiladas
 
@@ -274,11 +292,11 @@ ORDER BY
 
 Si filtramos por año 2005
 
-![datagrip64_4xXALBfDbk.png](attachment:c95e5f84-7a57-40a1-921e-868b4f7dbc14:datagrip64_4xXALBfDbk.png)
+![datagrip64_4xXALBfDbk.png](datagrip64_4xXALBfDbk.png)
 
 Si no filtramos y mostramos todos los quatrimestres de 2005 y 2006
 
-![datagrip64_tIHB08t6tq.png](attachment:e337a40a-70e9-417a-8629-05fb1c1f1265:datagrip64_tIHB08t6tq.png)
+![datagrip64_tIHB08t6tq.png](datagrip64_tIHB08t6tq.png)
 
 ### Análisis de Fechas (Días de semana vs Fin de semana)
 
@@ -296,7 +314,7 @@ GROUP BY
 
 Resultado
 
-![datagrip64_CioangJs2u.png](attachment:ac281a51-4402-4c2d-ba6c-9577e894051d:datagrip64_CioangJs2u.png)
+![datagrip64_CioangJs2u.png](datagrip64_CioangJs2u.png)
 
 ### Ingresos obtenidos en los dias marcados como vacaciones.
 
@@ -313,11 +331,11 @@ GROUP BY t.full_date
 ORDER BY t.full_date;
 ```
 
-![datagrip64_LFQBg9TQZj.png](attachment:fbcf6f10-400c-4f3b-b813-78240d8cbd91:datagrip64_LFQBg9TQZj.png)
+![datagrip64_LFQBg9TQZj.png](datagrip64_LFQBg9TQZj.png)
 
 Si queremos el total de todas las vacaciones simplemente tenemos que comentar dos líneas
 
-![datagrip64_OivCqmdwQy.png](attachment:2d83dd48-a8b8-448c-a3ca-2ac6040d1226:datagrip64_OivCqmdwQy.png)
+![datagrip64_OivCqmdwQy.png](datagrip64_OivCqmdwQy.png)
 
 # Para terminar
 
