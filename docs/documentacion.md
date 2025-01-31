@@ -1,23 +1,5 @@
 # Tabla de hechos: beneficios por categoría por día.
 
-<aside>
-📌
-
-Para ver la estructura SQL he creado un repositorio en Github
-
-[https://github.com/thorcazo/sakila_star](https://github.com/thorcazo/sakila_star)
-
-</aside>
-
-<aside>
-📌
-
-Esta documentación se ha creado con Notion puede ver este mismo archivo en este enlace → [Tabla de hechos: beneficios por categoría por día.](https://www.notion.so/Tabla-de-hechos-beneficios-por-categor-a-por-d-a-18ba793e3bd180cc9095d392b09ff080?pvs=21) 
-
-</aside>
-
----
-
 El objetivo de esta tabla de hechos es consultar los datos sobre los **beneficios obtenidos por categoría por día**, aunque puede llegar a ser lo suficiente flexible para hacer otro tipo de consultas agregando más dimensiones. 
 
 Para evitar problemas con la base de datos original hice una nueva base de datos llamada `sakila_star` y comencé a trabajar desde ahí. 
