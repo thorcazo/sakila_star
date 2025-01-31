@@ -52,7 +52,7 @@ Cada dimensión contiene información detallada que se podrá mostrar en la tabl
 
 En siguiente **esquema** se muesrtra cómo se vería el modelo estrella enlazando las tablas dimensionales con la tabla de hechos `Fact_benefits`
 
-![image.png](image.png)
+![image.png](img/image.png)
 
 # Creación de tablas SQL
 
@@ -212,7 +212,7 @@ ORDER BY
     c.category_name;
 ```
 
-![datagrip64_yZOM6fs86Z.png](datagrip64_yZOM6fs86Z.png)
+![datagrip64_yZOM6fs86Z.png](img/datagrip64_yZOM6fs86Z.png)
 
 ### Cantidad de alquileres (total_rental) por Película y Año
 
@@ -234,7 +234,7 @@ ORDER BY
     total_rentals DESC;
 ```
 
-![datagrip64_QwwLkfpqpt.png](datagrip64_QwwLkfpqpt.png)
+![datagrip64_QwwLkfpqpt.png](img/datagrip64_QwwLkfpqpt.png)
 
 ### Top 10 Películas más Alquiladas
 
@@ -274,11 +274,11 @@ ORDER BY
 
 Si filtramos por año 2005
 
-![datagrip64_4xXALBfDbk.png](datagrip64_4xXALBfDbk.png)
+![datagrip64_4xXALBfDbk.png](img/datagrip64_4xXALBfDbk.png)
 
 Si no filtramos y mostramos todos los quatrimestres de 2005 y 2006
 
-![datagrip64_tIHB08t6tq.png](datagrip64_tIHB08t6tq.png)
+![datagrip64_tIHB08t6tq.png](img/datagrip64_tIHB08t6tq.png)
 
 ### Análisis de Fechas (Días de semana vs Fin de semana)
 
@@ -296,7 +296,7 @@ GROUP BY
 
 Resultado
 
-![datagrip64_CioangJs2u.png](datagrip64_CioangJs2u.png)
+![datagrip64_CioangJs2u.png](img/datagrip64_CioangJs2u.png)
 
 ### Ingresos obtenidos en los dias marcados como vacaciones.
 
@@ -313,11 +313,11 @@ GROUP BY t.full_date
 ORDER BY t.full_date;
 ```
 
-![datagrip64_LFQBg9TQZj.png](datagrip64_LFQBg9TQZj.png)
+![datagrip64_LFQBg9TQZj.png](img/datagrip64_LFQBg9TQZj.png)
 
 Si queremos el total de todas las vacaciones simplemente tenemos que comentar dos líneas
 
-![datagrip64_OivCqmdwQy.png](datagrip64_OivCqmdwQy.png)
+![datagrip64_OivCqmdwQy.png](img/datagrip64_OivCqmdwQy.png)
 
 # Para terminar
 
