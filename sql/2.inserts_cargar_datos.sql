@@ -143,3 +143,62 @@ GROUP BY
     dcat.category_key,
     dfilm.film_key,
     dc.customer_key;
+
+
+
+-- Poblar Dim_Store
+INSERT INTO Dim_Store (store_id, address_name, city_name, country_name, manager_name)
+SELECT
+    st.store_id,
+    ad.address AS address_name,
+    ct.city AS city_name,
+    country.country AS country_name,
+    CONCAT(staff.first_name, ' ', staff.last_name) AS manager_name
+FROM
+    sakila.store st
+    JOIN sakila.address ad ON st.address_id = ad.address_id
+    JOIN sakila.city ct ON ad.city_id = ct.city_id
+    JOIN sakila.country country ON ct.country_id = country.country_id
+    JOIN sakila.staff staff ON st.manager_staff_id = staff.staff_id;
+
+
+-- Antes de agregar elimino todos los datos de la tabla Fact_Benefits
+TRUNCATE TABLE `Fact_Benefits`;
+
+-- Poblar de nuevo Fact_Benefits
+INSERT INTO Fact_Benefits (
+    date_key,
+    category_key,
+    film_key,
+    customer_key,
+    store_key,
+    total_rental,
+    total_revenue
+)
+SELECT
+    dt.date_key,
+    dcat.category_key,
+    dfilm.film_key,
+    dc.customer_key,
+    ds.store_key,              -- Nueva columna agregada
+    COUNT(*) AS total_rental,
+    SUM(p.amount) AS total_revenue
+FROM
+    sakila.rental r
+    JOIN sakila.inventory i ON r.inventory_id = i.inventory_id
+    JOIN sakila.film f ON i.film_id = f.film_id
+    JOIN sakila.film_category fc ON f.film_id = fc.film_id
+    JOIN sakila.category c ON fc.category_id = c.category_id
+    JOIN sakila.payment p ON r.rental_id = p.rental_id
+    JOIN Dim_Time dt ON dt.full_date = DATE(r.rental_date)
+    JOIN Dim_Category dcat ON dcat.category_name = c.name
+    JOIN Dim_Film dfilm ON dfilm.film_title = f.title
+    JOIN Dim_Customer dc ON dc.customer_id = r.customer_id
+    JOIN sakila.staff s ON r.staff_id = s.staff_id
+    JOIN Dim_Store ds ON ds.store_id = s.store_id
+GROUP BY
+    dt.date_key,
+    dcat.category_key,
+    dfilm.film_key,
+    dc.customer_key,
+    ds.store_key;

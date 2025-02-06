@@ -80,4 +80,27 @@ ADD COLUMN customer_key INT AFTER film_key;
 ALTER TABLE Fact_Benefits
 ADD CONSTRAINT fk_customer FOREIGN KEY (customer_key) REFERENCES Dim_Customer (customer_key);
 
-TRUNCATE TABLE `Fact_Benefits`;
+
+
+
+-- Dim_Store
+
+-- Crear la tabla Dim_Store
+CREATE TABLE Dim_Store (
+    store_key INT PRIMARY KEY AUTO_INCREMENT,  -- Clave surrogate
+    store_id INT,                               -- Identificador natural de la tienda
+    address_name VARCHAR(255),
+    city_name VARCHAR(100),
+    country_name VARCHAR(100),
+    manager_name VARCHAR(255)
+);
+
+-- Alteramos Fact_Benefits para agregar la llave foranea de la tabla Dim_Store
+ALTER TABLE Fact_Benefits 
+    ADD COLUMN store_key INT AFTER customer_key;
+
+ALTER TABLE Fact_Benefits 
+    ADD CONSTRAINT fk_store FOREIGN KEY (store_key) REFERENCES Dim_Store(store_key);
+
+
+
