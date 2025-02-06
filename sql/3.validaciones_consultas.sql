@@ -68,3 +68,17 @@ JOIN Dim_Time t ON fb.date_key = t.date_key
 WHERE t.is_holiday = 1
 -- GROUP BY t.full_date  
 ORDER BY t.full_date;
+
+
+-- NUEVAS CONSULTAS con la Dim_Customer
+
+select * from `Fact_Benefits`
+
+-- Los clientes que mas han alquilado peliculas
+select fb.customer_key, customer_name, count(*) as total_rental, full_date 
+from `Fact_Benefits` fb 
+join `Dim_Customer` dc on fb.customer_key = dc.customer_key
+join `Dim_Time` dt on fb.date_key = dt.date_key
+-- where customer_name = 'KEN PREWITT'
+group by customer_key, full_date 
+order by total_rental  desc
